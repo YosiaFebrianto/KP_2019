@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
         mContext = this;
-        mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
+        //mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         initComponents();
     }
 
@@ -49,8 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                requestLogin();
+                //loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                //requestLogin();
+                Intent intent = new Intent(mContext, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

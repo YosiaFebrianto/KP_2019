@@ -30,7 +30,7 @@
             android:text="Selamat Datang di App" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/asetUsername"
+            android:id="@+id/asetTanggal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvselamatdatang">
@@ -48,7 +48,7 @@
             android:id="@+id/asetPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/asetUsername"
+            android:layout_below="@+id/asetTanggal"
             app:passwordToggleContentDescription="show"
             app:passwordToggleDrawable="@drawable/toggle_password"
             app:passwordToggleEnabled="true">
