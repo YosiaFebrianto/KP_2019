@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">KP_2019</string>
+    <string name="app_name">KP2019</string>
     <string name="title_activity_bottom">BottomActivity</string>
-    <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_member">Member</string>
+    <string name="title_laporan">Laporan</string>
+    <string name="title_profil">Profil</string>
 </resources>

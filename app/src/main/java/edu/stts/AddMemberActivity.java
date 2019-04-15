@@ -10,14 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class AddKegiatan extends Fragment {
-
+public class AddMemberActivity extends Fragment {
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
     private EditText btDatePicker;
@@ -25,9 +23,9 @@ public class AddKegiatan extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_add_kegiatan, container, false);
+        View view = inflater.inflate(R.layout.activity_add_member, container, false);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        btDatePicker = (EditText) view.findViewById(R.id.etTanggal);
+        btDatePicker = (EditText) view.findViewById(R.id.etTgl);
         btDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,7 +34,6 @@ public class AddKegiatan extends Fragment {
         });
         return view;
     }
-
     private void showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {

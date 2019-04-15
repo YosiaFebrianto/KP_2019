@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".AddKegiatan">
 
     <TextView
@@ -68,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
@@ -76,6 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tanggal"
+            android:focusable="false"
+            android:inputType="date"
             android:paddingTop="10dp"
             android:singleLine="true"
             android:textColor="@android:color/black"
@@ -120,6 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup">
@@ -138,12 +143,12 @@
     <Button
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:background="#7d6ee2"
-        android:text="Button"
+        android:text="BUAT LAPORAN"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

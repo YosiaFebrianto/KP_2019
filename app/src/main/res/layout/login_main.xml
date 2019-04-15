@@ -4,10 +4,12 @@
     android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
@@ -18,14 +20,14 @@
             android:id="@+id/imgLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/bulog" />
+            android:src="@drawable/fire" />
 
         <TextView
             android:id="@+id/tvselamatdatang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgLogo"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="Selamat Datang di App" />
 
@@ -69,8 +71,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/asetPassword"
-            android:text="login" />
-
+            android:layout_marginTop="15dp"
+            android:background="#7d6ee2"
+            android:text="login"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
     </RelativeLayout>
-
+</ScrollView>
 </RelativeLayout>
