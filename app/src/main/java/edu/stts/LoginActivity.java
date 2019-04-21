@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 //requestLogin();
                 Intent intent = new Intent(mContext, MainActivity.class);
                 startActivity(intent);
@@ -69,9 +69,9 @@ public class LoginActivity extends AppCompatActivity {
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
                                     Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
-                                    String nama = jsonRESULTS.getJSONObject("user").getString("nama");
+                                    //String nama = jsonRESULTS.getJSONObject("user").getString("nama");
                                     Intent intent = new Intent(mContext, MainActivity.class);
-                                    intent.putExtra("result_nama", nama);
+                                    //intent.putExtra("result_nama", nama);
                                     startActivity(intent);
                                 } else {
                                     // Jika login gagal
@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Log.e("debug", "onFailure: ERROR > " + t.toString());
                         loading.dismiss();
+                        Toast.makeText(mContext, "Tidak Ada Jaringan Internet", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
