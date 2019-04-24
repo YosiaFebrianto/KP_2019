@@ -8,19 +8,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class AddKegiatan extends Fragment {
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-    private EditText btDatePicker;
+    private EditText btDatePicker,etTgl,etAlamat;
+    private TextView tvstatus;
+    private Button btn;
 
     @Nullable
     @Override
@@ -34,6 +40,33 @@ public class AddKegiatan extends Fragment {
                 showDateDialog();
             }
         });
+        btn=view.findViewById(R.id.btn_save);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btn.getText().toString().equalsIgnoreCase("BUAT LAPORAN")){
+                    Toast.makeText(getActivity(),"Add New Laporan",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(),"Save Update",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        etTgl=(EditText)view.findViewById(R.id.etTanggal);
+        etAlamat=(EditText)view.findViewById(R.id.etAlamat);
+        tvstatus=view.findViewById(R.id.tv_judul_laporan);
+        if(getArguments()!=null){
+            Date mydate=null;
+            try {
+                mydate=dateFormatter.parse(getArguments().getString("Tgl"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            etTgl.setText(dateFormatter.format(mydate));
+            etAlamat.setText(String.valueOf(getArguments().getString("Alamat")));
+            tvstatus.setText("Edit Laporan Komsel");
+            btn.setText("Save");
+        }
         return view;
     }
 

@@ -30,7 +30,7 @@
             android:orientation="vertical"
             android:padding="5dp">
                 <TextView
-                    android:id="@+id/tvNama"
+                    android:id="@+id/tv_Tgl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Yosia Febrianto"
@@ -38,7 +38,7 @@
                     app:fontFamily="sans-serif-black"/>
 
                 <TextView
-                    android:id="@+id/tvTanggal"
+                    android:id="@+id/tv_Jumlah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="16-02-1998"

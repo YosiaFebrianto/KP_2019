@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MemberActivity extends Fragment {
     private RecyclerView rview;
     private MemberAdapter adapter;
-    private ArrayList<Member> menulist;
+    private ArrayList<Member> memberlist;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,31 +40,31 @@ public class MemberActivity extends Fragment {
 
             }
         });
-        menulist = new ArrayList<Member>();
-        menulist.add(new Member("Andre","11-05-1998","09112221"));
-        menulist.add(new Member("Nafa","12-06-2001","091122211"));
-        menulist.add(new Member("Juli","20-04-1981","091111"));
-        menulist.add(new Member("Andre","11-05-1998","09112221"));
-        menulist.add(new Member("Nafa","12-06-2001","091122211"));
-        menulist.add(new Member("Juli","20-04-1981","091111"));
-        menulist.add(new Member("Andre","11-05-1998","09112221"));
-        menulist.add(new Member("Nafa","12-06-2001","091122211"));
-        menulist.add(new Member("Juli","20-04-1981","091111"));
-        menulist.add(new Member("Andre1","11-05-1998","09112221"));
-        menulist.add(new Member("Nafa2","12-06-2001","091122211"));
-        menulist.add(new Member("Juli3","20-04-1981","091111"));
+        memberlist = new ArrayList<Member>();
+        memberlist.add(new Member("Andre","11-05-1998","09112221"));
+        memberlist.add(new Member("Nafa","12-06-2001","091122211"));
+        memberlist.add(new Member("Juli","20-04-1981","091111"));
+        memberlist.add(new Member("Andre","11-05-1998","09112221"));
+        memberlist.add(new Member("Nafa","12-06-2001","091122211"));
+        memberlist.add(new Member("Juli","20-04-1981","091111"));
+        memberlist.add(new Member("Andre","11-05-1998","09112221"));
+        memberlist.add(new Member("Nafa","12-06-2001","091122211"));
+        memberlist.add(new Member("Juli","20-04-1981","091111"));
+        memberlist.add(new Member("Andre1","11-05-1998","09112221"));
+        memberlist.add(new Member("Nafa2","12-06-2001","091122211"));
+        memberlist.add(new Member("Juli3","20-04-1981","091111"));
 
         rview=view.findViewById(R.id.rview);
         //anonymus inner class
-        adapter=new MemberAdapter(menulist, new RVClickListener() {
+        adapter=new MemberAdapter(memberlist, new RVClickListener() {
             @Override
             public void recyclerViewListClicked(View v, int posisi) {
                 Toast.makeText(getActivity(),"posisi :"+posisi,Toast.LENGTH_SHORT).show();
                 Fragment fragment = new AddMemberActivity();
                 Bundle b=new Bundle();
-                b.putString("Nama",menulist.get(posisi).getNama());
-                b.putString("Tgl",menulist.get(posisi).getTgl());
-                b.putString("Nohp",menulist.get(posisi).getNohp());
+                b.putString("Nama",memberlist.get(posisi).getNama());
+                b.putString("Tgl",memberlist.get(posisi).getTgl());
+                b.putString("Nohp",memberlist.get(posisi).getNohp());
                 fragment.setArguments(b);
                 getFragmentManager().beginTransaction().add(R.id.fl_container,fragment).commit();
 

@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context=".LaporanActivity">
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,25 +28,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rviewlaporan"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@drawable/bulog" />
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="56dp" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@drawable/bulog" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@drawable/bulog" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@drawable/bulog" />
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.constraint.ConstraintLayout>

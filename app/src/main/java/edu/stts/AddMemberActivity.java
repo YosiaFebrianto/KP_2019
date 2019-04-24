@@ -14,15 +14,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class AddMemberActivity extends Fragment {
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-    private EditText btDatePicker;
-    private TextView etNama,etTgl,etNohp,etstatus;
+    private EditText btDatePicker,etNama,etTgl,etNohp;
+    private TextView tvstatus;
     private Button btn;
 
     @Nullable
@@ -38,10 +40,10 @@ public class AddMemberActivity extends Fragment {
             }
         });
 
-        etNama=view.findViewById(R.id.etNama);
-        etTgl=view.findViewById(R.id.etTanggal);
-        etNohp=view.findViewById(R.id.etNoHp);
-        etstatus=view.findViewById(R.id.tv_ket_AddMember);
+        etNama=(EditText)view.findViewById(R.id.etNama);
+        etTgl=(EditText)view.findViewById(R.id.etTgl);
+        etNohp=(EditText)view.findViewById(R.id.etNoHp);
+        tvstatus=view.findViewById(R.id.tv_ket_AddMember);
         btn=view.findViewById(R.id.btn_addmember);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +57,17 @@ public class AddMemberActivity extends Fragment {
             }
         });
         if(getArguments()!=null){
-            String tanggal=String.valueOf(getArguments().getString("Tgl"));
-            //int hari=Integer.parseInt(tanggal.substring(0,2));
-            //int bulan=Integer.parseInt(tanggal.substring(3,2));
-            //int tahun=Integer.parseInt(tanggal.substring(6,4));
+            Date mydate=null;
+            try {
+                mydate=dateFormatter.parse(getArguments().getString("Tgl"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             etNama.setText(String.valueOf(getArguments().getString("Nama")));
-            //etTgl.setText("12-10-1999");
+            etTgl.setText(dateFormatter.format(mydate));
             etNohp.setText(String.valueOf(getArguments  ().getString("Nohp")));
-            etstatus.setText("Edit Member");
+            tvstatus.setText("Edit Member");
             btn.setText("Save");
-
         }
 
         return view;
