@@ -14,11 +14,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddMemberActivity extends Fragment {
     private DatePickerDialog datePickerDialog;
@@ -26,6 +38,10 @@ public class AddMemberActivity extends Fragment {
     private EditText btDatePicker,etNama,etTgl,etNohp;
     private TextView tvstatus;
     private Button btn;
+
+    String url = "http://192.168.1.4/mdp_api/index.php";
+
+    RequestQueue rq;
 
     @Nullable
     @Override
@@ -49,7 +65,41 @@ public class AddMemberActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 if(btn.getText().toString().equalsIgnoreCase("ADD")){
-                    Toast.makeText(getActivity(),"Add New",Toast.LENGTH_SHORT).show();
+                    JSONObject data = new JSONObject();
+                    try {
+                        data.put("nama", etNama.getText().toString());
+                        data.put("tgl_lahir", etTgl.getText().toString());
+                        data.put("notelp", etNohp.getText().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    JsonObjectRequest jor = new JsonObjectRequest(
+                            Request.Method.POST, url + "/Admin/add_Member", data,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                    ){
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> header = new HashMap<String, String>();
+                            header.put("Content-Type", "application/json;charset=utf-8");
+                            return header;
+                        }
+                    };
+
+                    rq.add(jor);
+//                    Toast.makeText(getActivity(),"Add New Aneh",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
                 }
@@ -72,6 +122,7 @@ public class AddMemberActivity extends Fragment {
 
         return view;
     }
+
     private void showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
