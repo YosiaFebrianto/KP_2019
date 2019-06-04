@@ -1,6 +1,7 @@
 package edu.stts;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,8 +65,10 @@ public class DashboardActivity extends Fragment {
         profileName = view.findViewById(R.id.tv_profile_nama);
         drawChart(view);
 
-        SharedPreferences sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
-        profileName.setText(sp.getString("nama", null));
+        SharedPreferences sp = this.getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        String nama = sp.getString("nama", "Dummy");
+        profileName.setText(nama);
+        Log.e("NAMA DASH", nama);
         return view;
     }
 
