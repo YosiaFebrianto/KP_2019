@@ -129,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                         Ed.putString("nama", userJSON.getString("nama"));
                         Ed.putString("jabatan", userJSON.getString("jabatan"));
                         Ed.putString("id_komsel", userJSON.getString("komsel"));
+                        Ed.putString("username", etUsername.getText().toString());
                         Ed.apply();
                         Intent intent = new Intent(mContext, MainActivity.class);
                         startActivity(intent);
