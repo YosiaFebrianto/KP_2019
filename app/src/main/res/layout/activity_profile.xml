@@ -102,13 +102,14 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_addmember"
+                android:id="@+id/btn_changepass"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
                 android:background="#7d6ee2"
+                android:onClick="changePassword"
                 android:text="SAVE"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
