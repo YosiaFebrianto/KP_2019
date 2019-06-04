@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,20 +35,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddMemberActivity extends Fragment {
+    private DomainConfig domainConfig;
+
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
     private EditText btDatePicker,etNama,etTgl,etNohp;
     private TextView tvstatus;
     private Button btn;
 
-    String url = "http://192.168.1.4/mdp_api/index.php";
-
-    RequestQueue rq;
+    RequestQueue requestQueue;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_add_member, container, false);
+        domainConfig = new DomainConfig();
+        requestQueue = Volley.newRequestQueue(getContext());
+
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         btDatePicker = (EditText) view.findViewById(R.id.etTgl);
         btDatePicker.setOnClickListener(new View.OnClickListener() {
@@ -75,20 +80,27 @@ public class AddMemberActivity extends Fragment {
                     }
 
                     JsonObjectRequest jor = new JsonObjectRequest(
-                            Request.Method.POST, url + "/Admin/add_Member", data,
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
+                        Request.Method.POST,  domainConfig.getDomain_local() + "/Admin/add_Member", data,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    if(response.getBoolean("status")){
+                                        Toast.makeText(getActivity(), "Sukses insert member", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
-
-                                }
+                                Log.e("Response : ",response.toString());
                             }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
                     ){
                         @Override
                         public Map<String, String> getHeaders() throws AuthFailureError {
@@ -98,8 +110,8 @@ public class AddMemberActivity extends Fragment {
                         }
                     };
 
-                    rq.add(jor);
-//                    Toast.makeText(getActivity(),"Add New Aneh",Toast.LENGTH_SHORT).show();
+                    requestQueue.add(jor);
+                    Toast.makeText(getActivity(),"Add New Aneh",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
                 }
