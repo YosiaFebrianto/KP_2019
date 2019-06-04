@@ -80,7 +80,7 @@ public class AddMemberActivity extends Fragment {
                     }
 
                     JsonObjectRequest jor = new JsonObjectRequest(
-                        Request.Method.POST,  domainConfig.getDomain_local() + "/Admin/add_Member", data,
+                        Request.Method.POST,  domainConfig.getDomain_local() + "/ketua_api/add_Member", data,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {

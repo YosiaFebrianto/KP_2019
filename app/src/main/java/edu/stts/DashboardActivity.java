@@ -1,6 +1,7 @@
 package edu.stts;
 
 import android.app.DatePickerDialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,11 +33,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class DashboardActivity extends Fragment {
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-    private TextView tvDateStart,tvDateEnd;
+    private TextView tvDateStart,tvDateEnd, profileName;
 
     @Nullable
     @Override
@@ -57,7 +60,11 @@ public class DashboardActivity extends Fragment {
                 showDateDialog2();
             }
         });
+        profileName = view.findViewById(R.id.tv_profile_nama);
         drawChart(view);
+
+        SharedPreferences sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+        profileName.setText(sp.getString("nama", null));
         return view;
     }
 

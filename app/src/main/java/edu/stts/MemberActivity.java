@@ -22,6 +22,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -62,7 +63,7 @@ public class MemberActivity extends Fragment {
         memberlist = new ArrayList<Member>();
 
         //load member from database
-        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, domainConfig.getDomain_local() + "/Admin/get_Member", null,
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, domainConfig.getDomain_local() + "/ketua_api/get_Member", null,
             new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray response) {
