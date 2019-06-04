@@ -1,6 +1,8 @@
 package edu.stts;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -42,6 +45,7 @@ public class AddMemberActivity extends Fragment {
     private EditText btDatePicker,etNama,etTgl,etNohp;
     private TextView tvstatus;
     private Button btn;
+    private String idEdit;
 
     RequestQueue requestQueue;
 
@@ -109,13 +113,41 @@ public class AddMemberActivity extends Fragment {
                             return header;
                         }
                     };
-
                     requestQueue.add(jor);
-                    Toast.makeText(getActivity(),"Add New Aneh",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
-                }
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ketua_api/edit_member", new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject res = new JSONObject(response);
+                                if(res.getBoolean("status")){
+                                    Toast.makeText(getActivity(), "Sukses Edit Member", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(getActivity(), "ERROR", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("error", error.getMessage());
+                        }
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("nama", etNama.getText().toString());
+                            params.put("tgl_lahir", etTgl.getText().toString());
+                            params.put("notelp", etNohp.getText().toString());
+                            params.put("id", idEdit);
+                            return params;
+                        }
+                    };
+                    requestQueue.add(stringRequest);
+                }
             }
         });
         if(getArguments()!=null){
@@ -125,6 +157,7 @@ public class AddMemberActivity extends Fragment {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            idEdit = String.valueOf(getArguments().getString("user_id"));
             etNama.setText(String.valueOf(getArguments().getString("Nama")));
             etTgl.setText(dateFormatter.format(mydate));
             etNohp.setText(String.valueOf(getArguments  ().getString("Nohp")));
