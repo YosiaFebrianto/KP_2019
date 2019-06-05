@@ -85,10 +85,12 @@ public class LoginActivity extends AppCompatActivity {
                         Ed.putString("nama", userJSON.getString("nama"));
                         Ed.putString("jabatan", userJSON.getString("jabatan"));
                         Ed.putString("id_komsel", userJSON.getString("komsel"));
+                        Toast.makeText(mContext, "ss "+ userJSON.getString("komsel"), Toast.LENGTH_SHORT).show();
                         Ed.putString("username", etUsername.getText().toString());
                         Ed.apply();
                         Intent intent = new Intent(mContext, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         String error_message = "Error";
                         Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();

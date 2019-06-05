@@ -1,7 +1,7 @@
 package edu.stts;
 
 public class DomainConfig {
-    private final String domain_local = "http://192.168.1.6/mdp_api/index.php";
+    private final String domain_local = "http://192.168.0.100/mdp_api/index.php";
 
     public DomainConfig() {
     }
