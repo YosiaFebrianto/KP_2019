@@ -65,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 requestLogin();
-                Intent intent = new Intent(mContext, MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(mContext, MainActivity.class);
+                //startActivity(intent);
             }
         });
     }
@@ -84,10 +84,13 @@ public class LoginActivity extends AppCompatActivity {
                         Ed.putString("nama", userJSON.getString("nama"));
                         Ed.putString("jabatan", userJSON.getString("jabatan"));
                         Ed.putString("id_komsel", userJSON.getString("komsel"));
+                        //Toast.makeText(mContext, "ss "+ userJSON.getString("komsel"), Toast.LENGTH_SHORT).show();
                         Ed.putString("username", etUsername.getText().toString());
                         Ed.apply();
+                        loading.dismiss();
                         Intent intent = new Intent(mContext, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         String error_message = "Error";
                         Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();

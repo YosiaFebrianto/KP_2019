@@ -168,6 +168,7 @@ public class AddMemberActivity extends Fragment {
         return view;
     }
 
+
     private void showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
@@ -185,4 +186,6 @@ public class AddMemberActivity extends Fragment {
 
         datePickerDialog.show();
     }
+
+
 }

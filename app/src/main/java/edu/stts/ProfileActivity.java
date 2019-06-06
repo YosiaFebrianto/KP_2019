@@ -30,10 +30,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class ProfileActivity extends Fragment {
     EditText passwordLama,passwordBaru,confpasswordBaru;
     private DomainConfig domainConfig;
-    Button submitPassword;
+    Button submitPassword,submitLogout;
     RequestQueue requestQueue;
     SharedPreferences sp;
     @Nullable
@@ -45,10 +47,18 @@ public class ProfileActivity extends Fragment {
         passwordBaru = view.findViewById(R.id.etPasswordBaru);
         confpasswordBaru = view.findViewById(R.id.etCPasswordBaru);
         requestQueue = Volley.newRequestQueue(getContext());
-
         submitPassword = view.findViewById(R.id.btn_changepass);
 
-        sp = this.getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        submitLogout = view.findViewById(R.id.btn_logout);
+
+        submitLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+        });
+
+        sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
 
         submitPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +104,14 @@ public class ProfileActivity extends Fragment {
             }
         });
 
-        sp = this.getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
+        sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
         return view;
+    }
+
+    private void signOut() {
+        //sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+        //sp.edit().clear().apply();
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }
