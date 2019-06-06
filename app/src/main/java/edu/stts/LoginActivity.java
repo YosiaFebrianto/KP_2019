@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     private void initComponents() {
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        
         btnLogin = (Button) findViewById(R.id.btnlogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject resJSON = new JSONObject(response);
-                    if(!resJSON.getBoolean("error")){
+                    if(resJSON.getString("error").equals("false")){
                         JSONObject userJSON = new JSONObject(resJSON.getString("user"));
 
                         SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
