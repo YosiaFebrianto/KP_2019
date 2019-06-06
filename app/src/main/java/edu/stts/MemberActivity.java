@@ -90,6 +90,7 @@ public class MemberActivity extends Fragment {
                             b.putString("Tgl",memberlist.get(posisi).getTgl());
                             b.putString("Nohp",memberlist.get(posisi).getNohp());
                             fragment.setArguments(b);
+                            ((MainActivity)getActivity()).showAddMember();
                             getFragmentManager().beginTransaction().add(R.id.fl_container,fragment).commit();
 
                         }
