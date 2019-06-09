@@ -39,10 +39,11 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPassword;
     Button btnLogin;
     ProgressDialog loading;
-
+    SharedPreferences sp;
     Context mContext;
     BaseApiService mApiService;
     RequestQueue rq;
+    String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,13 @@ public class LoginActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         domainConfig = new DomainConfig();
         rq = Volley.newRequestQueue(this);
+        sp = getSharedPreferences("Login", Context.MODE_PRIVATE);
+        login=sp.getString("username", "");
+        if(!login.equals("")){
+            Intent intent = new Intent(mContext, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         initComponents();
     }
 
@@ -70,8 +78,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private void requestLogin(){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/login_api/login", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Login_API/login", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -93,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }else{
                         String error_message = "Error";
+                        loading.dismiss();
                         Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {

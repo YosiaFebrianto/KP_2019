@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KP2019</string>
+    <string name="app_name">Connect Apps</string>
     <string name="title_activity_bottom">BottomActivity</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_member">Member</string>

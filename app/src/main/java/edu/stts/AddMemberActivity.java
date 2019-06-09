@@ -84,7 +84,7 @@ public class AddMemberActivity extends Fragment {
                     }
 
                     JsonObjectRequest jor = new JsonObjectRequest(
-                        Request.Method.POST,  domainConfig.getDomain_local() + "/ketua_api/add_Member", data,
+                        Request.Method.POST,  domainConfig.getDomain_local() + "/Ketua_API/add_Member", data,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
@@ -115,7 +115,7 @@ public class AddMemberActivity extends Fragment {
                     };
                     requestQueue.add(jor);
                 }else{
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ketua_api/edit_member", new Response.Listener<String>() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Ketua_API/edit_member", new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             try {

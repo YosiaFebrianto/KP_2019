@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             laporan=true;
         }
         else if(dash==true){
+            member=false;addlaporan=false;laporan=false;profile=false;
             finish();
         }
     }
@@ -81,18 +82,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.navigation_member:
                 fragment = new MemberActivity();
                 member=true;
+                dash=false;
                 break;
             case R.id.navigation_addlaporan:
                 fragment = new AddKegiatan();
                 addlaporan=true;
+                dash=false;
                 break;
             case R.id.navigation_laporan:
                 fragment = new LaporanActivity();
                 laporan=true;
+                dash=false;
                 break;
             case R.id.navigation_profile:
                 fragment = new ProfileActivity();
                 profile=true;
+                dash=false;
                 break;
         }
         return loadFragment(fragment);

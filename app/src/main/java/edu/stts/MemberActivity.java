@@ -65,7 +65,7 @@ public class MemberActivity extends Fragment {
         });
         memberlist = new ArrayList<Member>();
         //load member from database
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ketua_api/get_Member", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Ketua_API/get_Member", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("res", response);
@@ -111,7 +111,7 @@ public class MemberActivity extends Fragment {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("komsel_id", sp.getString("id_komsel", null));
+                params.put("username", sp.getString("username", null));
                 return params;
             }
         };

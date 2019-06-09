@@ -120,7 +120,7 @@ public class DashboardActivity extends Fragment implements  AdapterView.OnItemSe
         lvBirthday = view.findViewById(R.id.listViewBirthday);
         tvDataUltah = view.findViewById(R.id.tv_dataultah);
         domainConfig = new DomainConfig();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ketua_api/dashboard", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Ketua_API/dashboard", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -213,7 +213,7 @@ public class DashboardActivity extends Fragment implements  AdapterView.OnItemSe
     }
 
     private void drawChart(final View view, final int index_komsel) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ketua_api/get_report_dashboard", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Ketua_API/get_report_dashboard", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -274,7 +274,7 @@ public class DashboardActivity extends Fragment implements  AdapterView.OnItemSe
 
     @Override
     public void onItemSelected(AdapterView<?> parent, final View view, final int position, long id) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ketua_api/dashboard", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Ketua_API/dashboard", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

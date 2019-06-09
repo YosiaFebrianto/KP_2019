@@ -69,7 +69,7 @@ public class ProfileActivity extends Fragment {
                 final String tempPasswordBaru = passwordBaru.getText().toString();
                 String confpassword = confpasswordBaru.getText().toString();
                 if(tempPasswordBaru.equals(confpassword)){
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/changepassword_api/changepassword", new Response.Listener<String>() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/ChangePassword_API/changepassword", new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             try {
@@ -110,8 +110,9 @@ public class ProfileActivity extends Fragment {
 
     private void signOut() {
         //sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
-        //sp.edit().clear().apply();
+        sp.edit().clear().apply();
         Intent intent = new Intent(getContext(), LoginActivity.class);
         startActivity(intent);
+        getActivity().finish();
     }
 }
