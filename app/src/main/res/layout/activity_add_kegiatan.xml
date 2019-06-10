@@ -77,9 +77,9 @@
             android:id="@+id/etTanggal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tanggal"
             android:focusable="false"
-            android:inputType="date"
+            android:hint="Tanggal"
+            android:inputType="datetime"
             android:paddingTop="10dp"
             android:singleLine="true"
             android:textColor="@android:color/black"
@@ -101,14 +101,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Komsel" />
+            android:text="Ibadah" />
 
         <RadioButton
             android:id="@+id/rb_fellowship"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fellowship" />
+            android:text="Kunjungan" />
 
         <RadioButton
             android:id="@+id/rb_others"
