@@ -1,7 +1,7 @@
 package edu.stts;
 
 public class DomainConfig {
-    private final String domain_local = "http://192.168.1.6/kp2019_api/index.php";
+    private final String domain_local = "https://connectapps.000webhostapp.com/index.php";
 
     public DomainConfig() {
     }

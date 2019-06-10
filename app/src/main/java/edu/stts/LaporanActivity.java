@@ -45,6 +45,7 @@ public class LaporanActivity extends Fragment {
                 b.putString("Tgl",laporanlist.get(posisi).getTgl());
                 b.putString("Alamat",laporanlist.get(posisi).getJumhadir());
                 fragment.setArguments(b);
+                ((MainActivity)getActivity()).showAddLaporan();
                 getFragmentManager().beginTransaction().add(R.id.fl_container,fragment).commit();
 
             }

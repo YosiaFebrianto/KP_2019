@@ -1,16 +1,14 @@
 package edu.stts;
 
 public class Member {
-    private String nama,tgl,nohp;
-    private int id;
-    private static int counter;
+    private String nama,tgl,nohp, id;
 
 
-    public Member(String nama, String tgl, String nohp) {
+    public Member(String id, String nama, String tgl, String nohp) {
+        this.id = id;
         this.nama = nama;
         this.tgl = tgl;
         this.nohp = nohp;
-        id=++counter;
     }
 
     public String getNama() {
@@ -37,7 +35,7 @@ public class Member {
         this.nohp = nohp;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
@@ -47,7 +47,7 @@
                     app:srcCompat="@drawable/ic_profile_black_24dp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
@@ -73,6 +73,12 @@
                         app:fontFamily="sans-serif-black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/spinnerListKomsel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
@@ -184,11 +190,13 @@
                 android:layout_height="300dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp" >
+
+            </com.github.mikephil.charting.charts.BarChart>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
@@ -207,10 +215,18 @@
                     android:textSize="14sp"
                     app:fontFamily="sans-serif-black" />
 
+                <ListView
+                    android:id="@+id/listViewBirthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
+
                 <TextView
                     android:id="@+id/tv_dataultah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
                     android:gravity="center|top"
                     android:hint="Tidak ada data ulang tahun"
                     android:textSize="14sp" />
