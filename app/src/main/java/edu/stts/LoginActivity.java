@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
                         SharedPreferences.Editor Ed = sp.edit();
+                        Ed.putString("id", userJSON.getString("id"));
                         Ed.putString("nama", userJSON.getString("nama"));
                         Ed.putString("jabatan", userJSON.getString("jabatan"));
                         Ed.putString("id_komsel", userJSON.getString("komsel"));
