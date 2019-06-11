@@ -102,7 +102,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_changepass"
+                android:id="@+id/btn_addmember"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginStart="16dp"

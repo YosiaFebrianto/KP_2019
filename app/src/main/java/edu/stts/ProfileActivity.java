@@ -1,6 +1,5 @@
 package edu.stts;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -15,12 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -47,7 +44,7 @@ public class ProfileActivity extends Fragment {
         passwordBaru = view.findViewById(R.id.etPasswordBaru);
         confpasswordBaru = view.findViewById(R.id.etCPasswordBaru);
         requestQueue = Volley.newRequestQueue(getContext());
-        submitPassword = view.findViewById(R.id.btn_changepass);
+        submitPassword = view.findViewById(R.id.btn_addmember);
 
         submitLogout = view.findViewById(R.id.btn_logout);
 
