@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,15 +27,18 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -50,11 +55,15 @@ public class AddKegiatan extends Fragment {
     private RadioGroup jenis;
     private RadioButton selectedRadioButton;
     private DomainConfig domainConfig;
+    private List<String> ListAnggota;
+    private RecyclerView rvListAnggota;
     RequestQueue requestQueue;
     SharedPreferences sp;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        domainConfig = new DomainConfig();
+        requestQueue = Volley.newRequestQueue(getContext());
         View view = inflater.inflate(R.layout.activity_add_kegiatan, container, false);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         timeFormatter = new SimpleDateFormat("HH:mm", Locale.US);
@@ -75,6 +84,13 @@ public class AddKegiatan extends Fragment {
         addKegiatan = view.findViewById(R.id.btn_addkegiatan);
         jenis = (RadioGroup) view.findViewById(R.id.radioGroup);
         sp = this.getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+        ListAnggota = new ArrayList<>();
+            ListAnggota.add("Budi Rahman s");
+        ListAnggota.add("Ani Yudhoyono");
+        ListAnggota.add("Moses Kurniawan");
+        rvListAnggota = (RecyclerView) view.findViewById(R.id.rvAnggota);
+        rvListAnggota.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvListAnggota.setAdapter(new ListAnggotaAdapter(getActivity(), ListAnggota));
 //        StringRequest stringRequest = new StringRequest(Request.Method.POST, domainConfig.getDomain_local() + "/Laporan_API/jabatan", new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {
@@ -86,7 +102,6 @@ public class AddKegiatan extends Fragment {
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
-//
 //            }
 //        }, new Response.ErrorListener(){
 //            @Override
@@ -97,7 +112,7 @@ public class AddKegiatan extends Fragment {
 //            @Override
 //            protected Map<String, String> getParams() {
 //                Map<String, String> params = new HashMap<>();
-//                params.put("username", sp.getString("username", "Dummy"));
+//                params.put("id", sp.getString("id", "Dummy"));
 //                return params;
 //            }
 //        };
