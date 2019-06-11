@@ -1,6 +1,7 @@
 package edu.stts;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -46,13 +47,14 @@ public class AddMemberActivity extends Fragment {
     private TextView tvstatus;
     private Button btn;
     private String idEdit;
-
+    private SharedPreferences sp;
     RequestQueue requestQueue;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_add_member, container, false);
+        sp = getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
         domainConfig = new DomainConfig();
         requestQueue = Volley.newRequestQueue(getContext());
 
@@ -79,6 +81,7 @@ public class AddMemberActivity extends Fragment {
                         data.put("nama", etNama.getText().toString());
                         data.put("tgl_lahir", etTgl.getText().toString());
                         data.put("notelp", etNohp.getText().toString());
+                        data.put("komsel_id", sp.getString("id_komsel", ""));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

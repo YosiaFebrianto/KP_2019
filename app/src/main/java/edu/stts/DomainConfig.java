@@ -1,7 +1,7 @@
 package edu.stts;
 
 public class DomainConfig {
-    private final String domain_local = "https://connectapps.000webhostapp.com/index.php";
+    private final String domain_local = "http://192.168.0.104/mdp_api/index.php";
 
     public DomainConfig() {
     }
