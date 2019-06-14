@@ -112,7 +112,6 @@ public class MemberActivity extends Fragment {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("username", sp.getString("username", null));
-                params.put("komsel_id", sp.getString("komsel", null));
                 return params;
             }
         };
