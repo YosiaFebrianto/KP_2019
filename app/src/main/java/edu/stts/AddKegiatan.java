@@ -189,7 +189,7 @@ public class AddKegiatan extends Fragment {
                         protected Map<String, String> getParams() {
                             Map<String, String> params = new HashMap<>();
                             params.put("id", sp.getString("id", "Dummy"));
-                            params.put("komsel_id", komsel_id);
+                            params.put("komsel_id", sp.getString("id_komsel", "Dummy"));
                             params.put("jenis", jenis);
                             params.put("waktu", waktu);
                             params.put("alamat", alamat);
